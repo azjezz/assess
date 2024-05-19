@@ -1,0 +1,26 @@
+{
+    "name": "azjezz/assess",
+    "description": "Unix filesystem notification library for PHP",
+    "type": "library",
+    "require": {
+        "php": "^8.3",
+        "revolt/event-loop": "^1.0",
+        "amphp/amp": "^3.0",
+        "amphp/file": "^3.1"
+    },
+    "require-dev": {
+        "ext-pcntl": "*"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Assess\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "azjezz",
+            "email": "azjezz@protonmail.com"
+        }
+    ]
+}
