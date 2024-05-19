@@ -2,6 +2,7 @@
     "name": "azjezz/assess",
     "description": "Unix filesystem notification library for PHP",
     "type": "library",
+    "keywords": ["filesystem", "notification", "unix", "inotify", "kqueue", "fsevents", "file-watcher", "file-system", "watcher"],
     "require": {
         "php": "^8.3",
         "revolt/event-loop": "^1.0",
