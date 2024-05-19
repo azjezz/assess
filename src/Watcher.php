@@ -82,6 +82,7 @@ final class Watcher implements RegistryInterface
         });
 
         EventLoop::disable($this->eventLoopWatcherId);
+        EventLoop::unreference($this->eventLoopWatcherId);
     }
 
     /**
