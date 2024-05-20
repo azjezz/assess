@@ -39,9 +39,14 @@ final readonly class Indexer implements IndexerInterface
         $index = new Index([]);
 
         foreach ($directories as $directory) {
-            $index = $index->merge(
-                $this->indexDirectory($directory, $configuration),
-            );
+            if ($this->filesystem->isDirectory($directory)) {
+                $index = $index->merge($this->indexDirectory($directory, $configuration));
+            } else {
+                $node = $this->getNode($directory, $configuration);
+                if ($node !== null) {
+                    $index = $index->withNode($node);
+                }
+            }
         }
 
         return $index;
@@ -50,10 +55,6 @@ final readonly class Indexer implements IndexerInterface
     private function indexDirectory(string $directory, Configuration $configuration): Index
     {
         $index = new Index([]);
-        if (!$this->filesystem->isDirectory($directory)) {
-            return $index;
-        }
-
         if ($configuration->watchDirectories) {
             $node = $this->getNode($directory, $configuration);
             if ($node === null) {
